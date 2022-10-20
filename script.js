@@ -1,13 +1,19 @@
-let reset = document.createElement('div')
-reset.innerHTML = '<div id="reset"><button>RESET</button></div>'
-document.body.appendChild(reset)
-reset.addEventListener('click', () => {location.reload()})
-let squaresContainer = document.createElement('div')
-squaresContainer.setAttribute('class', 'container')
-document.body.appendChild(squaresContainer)
 let players = ['x', 'o']
 let player = players[0]
 
+let currentPlayer = document.createElement('div')
+currentPlayer.id = 'player'
+currentPlayer.innerText = 'Current Player: ' + player
+document.body.appendChild(currentPlayer)
+
+let squaresContainer = document.createElement('div')
+squaresContainer.setAttribute('class', 'container')
+document.body.appendChild(squaresContainer)
+
+let reset = document.createElement('div')
+reset.innerHTML = '<div id="reset"><button>RESET</button></div>'
+document.body.appendChild(reset)
+reset.addEventListener('click', () => { location.reload() })
 
 for (let i = 0; i < 9; i++) {
     let square = document.createElement('div')
@@ -15,9 +21,10 @@ for (let i = 0; i < 9; i++) {
     let xy = i.toString(3).padStart(2, '0')
     square.id = xy.slice(0, 1) + ',' + xy.slice(1)
     square.addEventListener('click', (event) => {
+        currentPlayer.innerText = 'Current Player: ' + player
         switchPlayer()
         if (square.classList.contains('unmarked')) { markSquare(square, player) }
-        if (isWon(square, player)) { 
+        if (isWon(square, player)) {
             let winScreen = document.createElement('div')
             winScreen.innerHTML = `<div class="popup"><h2>player ${player} has won!</h2><a>play again</a></div>`
             document.body.appendChild(winScreen)
@@ -48,13 +55,13 @@ function isWon(square, player) {
     let won = false
     paths.forEach(path => {
         let marked = []
-        for(xy of path) {
+        for (xy of path) {
             let square = document.getElementById(`${xy.toString()}`)
-            if(square.className.includes(`marked ${player}`)) {
+            if (square.className.includes(`marked ${player}`)) {
                 marked.push(square)
             }
         }
-        if(marked.length == 2) {
+        if (marked.length == 2) {
             won = true
         }
     })
