@@ -1,11 +1,17 @@
 body {
     max-width: 800px;
     margin: 0 auto;
+    align-items: center;
     color: forestgreen
 }
 
 h1 {
     text-align: center;
+}
+
+#reset {
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
@@ -31,4 +37,11 @@ img {
     width: 200px;
     height: 200px;
     mix-blend-mode: multiply;
+}
+
+.popup {
+    z-index: 3;
+    position: relative;
+    display: inline-block;
+    background-color: white
 }
