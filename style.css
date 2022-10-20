@@ -1,0 +1,34 @@
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    color: forestgreen
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    background-color: forestgreen;
+    width: 680px;
+    height: 680px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    padding: 20px 20px 20px 20px;
+}
+
+.square {
+    z-index: 1;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+}
+
+img {
+    z-index: 2;
+    width: 200px;
+    height: 200px;
+    mix-blend-mode: multiply;
+}
